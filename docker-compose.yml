@@ -1,0 +1,20 @@
+services:
+  # Metasploitable
+  metasploitable:
+    # profiles:
+    #   - metasploitable
+    image: tleemcjr/metasploitable2:latest
+    networks:
+      metasploitable:
+        ipv4_address: 10.0.1.3
+
+networks:
+  metasploitable:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: "ctf0"
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.1.0/24
+          gateway: 10.0.1.1
